@@ -10,9 +10,23 @@ describe('getTotalPrice', () => {
 //add item
 describe('addItem', () => {
     it('after adding candy object it is in ShoppingBasket.candies', () => {
-        const candy = {name: "Mars", price: 10};
+        const candy = "Mars";
         const basket = new ShoppingBasket();
         basket.addItem(candy);
-        expect(basket.candies).toEqual([candy]);
+        expect(basket.getItems()).toEqual([candy]);
+    })
+})
+
+describe('getTotalCalories', () => {
+    it('shopping basket can calculate total calories across items', () => {
+        const candy = {name: "Mars", calories: 100};
+        const apple = {name: "Pink Lady", calories: 50};
+        const basket = new ShoppingBasket();
+        basket.addItem(candy);
+        basket.addItem(apple);
+        expect(basket.getTotalCalories()).toEqual(150);
+        basket.addItem(apple);
+        expect(basket.getTotalCalories()).toEqual(200);
+
     })
 })
